@@ -1,7 +1,7 @@
 #
 # Docker Buildfile for the ycast-docker container based on alpine linux - about 41.4MB
 # put dockerfile and bootstrap.sh in same directory
-# usage: docker build --compress -f ycast-dockerfile-v9 -t yourrepro/ycast-docker:v9 .
+# usage: docker build --compress -f Dockerfile -t netraams/ycast-docker:latest .
 #
 FROM alpine:latest
 
@@ -43,10 +43,8 @@ RUN apk --no-cache update && \
     curl -L https://github.com/MaartenSanders/YCast/archive/$YC_VERSION.tar.gz \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
-#    pip3 uninstall --no-cache-dir -y py3-pip && \
     pip3 uninstall --no-cache-dir -y setuptools && \
     find /usr/lib -name \*.pyc -exec rm -f {} \; && \
-#    find /usr/share/terminfo -type f -not -name xterm -exec rm -f {} \; && \
     find /usr/lib -type f -name \*.exe -exec rm -f {} \; 
 
 #
