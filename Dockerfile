@@ -13,7 +13,7 @@ FROM alpine:latest
 # YC_PORT port ycast server listens to, e.g. 80
 #
 ENV YC_VERSION 1.0.0
-ENV YC_STATIONS /opt/ycast/stations.yml
+ENV YC_STATIONS /opt/ycast/stations/stations.yml
 ENV YC_DEBUG OFF
 ENV YC_PORT 80
 
@@ -26,7 +26,7 @@ ENV YC_PORT 80
 #
 RUN apk --no-cache update && \
     apk --no-cache upgrade && \
-    apk add --no-cache python3 && \
+    apk add --no-cache py3-pip && \
     apk add --no-cache zlib-dev && \
     apk add --no-cache jpeg-dev && \
     apk add --no-cache build-base && \
@@ -43,10 +43,11 @@ RUN apk --no-cache update && \
     curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
+#    pip3 uninstall --no-cache-dir -y setuptools && \
+    pip3 uninstall --no-cache-dir -y py3-pip && \
     pip3 uninstall --no-cache-dir -y setuptools && \
-    pip3 uninstall --no-cache-dir -y pip && \
     find /usr/lib -name \*.pyc -exec rm -f {} \; && \
-    find /usr/share/terminfo -type f -not -name xterm -exec rm -f {} \; && \
+#    find /usr/share/terminfo -type f -not -name xterm -exec rm -f {} \; && \
     find /usr/lib -type f -name \*.exe -exec rm -f {} \; 
 
 #
