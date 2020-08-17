@@ -41,7 +41,7 @@ RUN apk --no-cache update && \
     apk del --no-cache build-base && \
     apk del --no-cache zlib-dev && \
     apk add --no-cache curl && \
-    curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \ # https://github.com/MaartenSanders/YCast/archive/$YC_VERSION.tar.gz \ something didn't work??
+    curl -L https://codeload.github.com/MaartenSanders/YCast/tar.gz/$YC_VERSION \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
     pip3 uninstall --no-cache-dir -y setuptools && \
