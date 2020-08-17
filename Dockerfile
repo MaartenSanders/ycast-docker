@@ -1,7 +1,7 @@
 #
 # Docker Buildfile for the ycast-docker container based on alpine linux - about 41.4MB
 # put dockerfile and bootstrap.sh in same directory
-# usage: docker build --compress -f Dockerfile -t netraams/ycast-docker:latest .
+# usage: docker build --compress -f ycast-dockerfile-v9 -t yourrepro/ycast-docker:v9 .
 #
 FROM alpine:latest
 
@@ -41,11 +41,14 @@ RUN apk --no-cache update && \
     apk del --no-cache build-base && \
     apk del --no-cache zlib-dev && \
     apk add --no-cache curl && \
-    curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \ # https://github.com/MaartenSanders/YCast/archive/$YC_VERSION.tar.gz \ something didn't work??
+#    curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \
+    curl -L https://codeload.github.com/MaartenSanders/YCast/tar.gz/$YC_VERSION \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
     pip3 uninstall --no-cache-dir -y setuptools && \
+#    pip3 uninstall --no-cache-dir -y pip && \
     find /usr/lib -name \*.pyc -exec rm -f {} \; && \
+#    find /usr/share/terminfo -type f -not -name xterm -exec rm -f {} \; && \
     find /usr/lib -type f -name \*.exe -exec rm -f {} \; 
 
 #
@@ -68,4 +71,3 @@ EXPOSE $YC_PORT/tcp
 #
 RUN ["chmod", "+x", "/opt/bootstrap.sh"]
 ENTRYPOINT ["/opt/bootstrap.sh"]
-
