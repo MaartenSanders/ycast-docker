@@ -42,7 +42,7 @@ RUN apk --no-cache update && \
     apk del --no-cache zlib-dev && \
     apk add --no-cache curl && \
 #    curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \
-    curl -L https://github.com/milaq/YCast/archive/1.1.0.tar.gz \
+    curl -L https://github.com/milaq/YCast/archive/${YC_VERSION}.tar.gz \
 #    curl -L https://codeload.github.com/MaartenSanders/YCast/tar.gz/$YC_VERSION \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
@@ -55,7 +55,7 @@ RUN apk --no-cache update && \
 #
 # Set Workdirectory on ycast folder
 #
-WORKDIR /opt/ycast/YCast-$YC_VERSION
+WORKDIR /opt/ycast/YCast-${YC_VERSION}
 
 #
 # Copy bootstrap.sh to /opt
@@ -65,7 +65,7 @@ COPY bootstrap.sh /opt
 #
 # Docker Container should be listening for AVR on port 80
 #
-EXPOSE $YC_PORT/tcp
+EXPOSE ${YC_PORT}/tcp
 
 #
 # Start bootstrap on Container start
