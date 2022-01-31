@@ -12,7 +12,7 @@ FROM alpine:latest
 # YC_DEBUG turn ON or OFF debug output of ycast server else only start /bin/sh
 # YC_PORT port ycast server listens to, e.g. 80
 #
-ENV YC_VERSION 1.1.0
+ENV YC_VERSION master # 1.1.0
 ENV YC_STATIONS /opt/ycast/stations.yml
 ENV YC_DEBUG OFF
 ENV YC_PORT 80
