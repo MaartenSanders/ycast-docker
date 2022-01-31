@@ -42,7 +42,8 @@ RUN apk --no-cache update && \
     apk del --no-cache zlib-dev && \
     apk add --no-cache curl && \
 #    curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \
-    curl -L https://github.com/milaq/YCast/archive/${YC_VERSION}.tar.gz \
+#    curl -L https://github.com/milaq/YCast/archive/${YC_VERSION}.tar.gz \
+    curl -L https://github.com/milaq/YCast/archive/refs/heads/master.zip \
 #    curl -L https://codeload.github.com/MaartenSanders/YCast/tar.gz/$YC_VERSION \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
