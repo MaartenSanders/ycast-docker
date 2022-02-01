@@ -12,7 +12,7 @@ FROM alpine:latest
 # YC_DEBUG turn ON or OFF debug output of ycast server else only start /bin/sh
 # YC_PORT port ycast server listens to, e.g. 80
 #
-ENV YC_VERSION 1.1.0
+ENV YC_VERSION master
 ENV YC_STATIONS /opt/ycast/stations.yml
 ENV YC_DEBUG OFF
 ENV YC_PORT 80
@@ -42,7 +42,8 @@ RUN apk --no-cache update && \
     apk del --no-cache zlib-dev && \
     apk add --no-cache curl && \
 #    curl -L https://github.com/milaq/YCast/archive/$YC_VERSION.tar.gz \
-    curl -L https://github.com/milaq/YCast/archive/${YC_VERSION}.tar.gz \
+#    curl -L https://github.com/milaq/YCast/archive/${YC_VERSION}.tar.gz \
+    curl -L https://github.com/milaq/YCast/archive/master.tar.gz \
 #   curl -L https://github.com/milaq/YCast.git \
 #    curl -L https://codeload.github.com/MaartenSanders/YCast/tar.gz/$YC_VERSION \
     | tar xvzC /opt/ycast && \
