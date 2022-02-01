@@ -1,7 +1,7 @@
 #
 # Docker Buildfile for the ycast-docker container based on alpine linux - about 41.4MB
-# put dockerfile and bootstrap.sh in same directory
-# usage: docker build --compress -f ycast-dockerfile-v9 -t yourrepro/ycast-docker:v9 .
+# put dockerfile and bootstrap.sh in same directory and build or enter
+# docker build  https://github.com/MaartenSanders/ycast-docker.git
 #
 FROM alpine:latest
 
