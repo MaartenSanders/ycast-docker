@@ -36,6 +36,7 @@ RUN apk --no-cache update && \
     pip3 install --no-cache-dir flask && \
     pip3 install --no-cache-dir PyYAML && \
     pip3 install --no-cache-dir Pillow  && \
+    pip3 install --no-cache-dir olefile && \
     mkdir /opt/ycast && \
     apk del --no-cache python3-dev && \
     apk del --no-cache build-base && \
