@@ -1,0 +1,25 @@
+version: '3.3'
+
+volumes:
+    stations:
+
+networks:
+    npm-nc_frontend:
+        external: true
+
+services:
+    ycast-docker:
+        container_name: ycast
+        environment:
+            - YC_STATIONS=/opt/ycast/stations/stations.yml
+            - YC_DEBUG=ON
+            - TZ=Europe/Amsterdam
+            - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+            - YC_VERSION=master
+            - YC_PORT=80
+        volumes:
+            - stations:/opt/ycast/stations
+        restart: always
+        image: 'netraams/ycast-docker:v20'
+        networks:
+             - npm-nc_frontend
