@@ -32,11 +32,11 @@ RUN apk --no-cache update && \
     apk add --no-cache jpeg-dev && \
     apk add --no-cache build-base && \
     apk add --no-cache python3-dev && \
-    pip3 install --no-cache-dir requests && \
-    pip3 install --no-cache-dir flask && \
-    pip3 install --no-cache-dir PyYAML && \
-    pip3 install --no-cache-dir Pillow  && \
-    pip3 install --no-cache-dir olefile && \
+    pip3 install --no-cache-dir requests --break-system-packages && \
+    pip3 install --no-cache-dir flask --break-system-packages && \
+    pip3 install --no-cache-dir PyYAML --break-system-packages && \
+    pip3 install --no-cache-dir Pillow  --break-system-packages && \
+    pip3 install --no-cache-dir olefile --break-system-packages && \
     mkdir /opt/ycast && \
     apk del --no-cache python3-dev && \
     apk del --no-cache build-base && \
@@ -49,7 +49,7 @@ RUN apk --no-cache update && \
 #    curl -L https://codeload.github.com/MaartenSanders/YCast/tar.gz/$YC_VERSION \
     | tar xvzC /opt/ycast && \
     apk del --no-cache curl && \
-    pip3 uninstall --no-cache-dir -y setuptools && \
+    pip3 uninstall --no-cache-dir -y setuptools --break-system-packages && \
 #    pip3 uninstall --no-cache-dir -y pip && \
     find /usr/lib -name \*.pyc -exec rm -f {} \; && \
 #    find /usr/share/terminfo -type f -not -name xterm -exec rm -f {} \; && \
